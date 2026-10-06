@@ -55,3 +55,4 @@ chat-empresarial/
 - auth-fastapi/: servicio de autenticación en FastAPI.
 
 ## Video
+https://drive.google.com/file/d/1Yzkld3M9PBMLDh9iN60PnWhdQPSzVp1O/view?usp=sharing

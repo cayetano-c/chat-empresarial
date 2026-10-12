@@ -76,9 +76,8 @@ chat-empresarial/
 
 | Asignatura | Documento |
 |---|---|
-| Programación Orientada a Objetos | [docs/ProyectoIntegradorAlc-Alm-Cay.pdf](docs/ProyectoIntegradorAlc-Alm-Cay.pdf): análisis y requisitos del chat |
-| Tecnologías de Comunicación en Red | [docs/gta1-phase1-network-plan.pdf](docs/gta1-phase1-network-plan.pdf): plan de la infraestructura de red |
+| Programación Orientada a Objetos | [ProyectoIntegradorAlca-Alm-Cay.pdf](docs/ProyectoIntegradorAlca-Alm-Cay.pdf): análisis y requisitos del chat |
+| Tecnologías de Comunicación en Red | [GTA1_Phase_1_Integrated Project.pdf](docs/GTA1_Phase_1_Integrated%20Project.pdf): plan de la infraestructura de red |
 
 ## Video
-
-[pegar enlace del video]
+https://drive.google.com/file/d/1Yzkld3M9PBMLDh9iN60PnWhdQPSzVp1O/view

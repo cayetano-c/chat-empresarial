@@ -1,9 +1,8 @@
-# chat-empresarial
+# Chat Empresarial (Cliente-Servidor en Go con FastAPI)
 
-Proyecto Integrador, Fase 1-2
+Proyecto Integrador, Tercer Nivel
 Universidad Internacional del Ecuador, Facultad de Ciencias Técnicas
-Programación Orientada a Objetos (03-SIN-A)
-Docente: Ing. Ivan Galo Reyes Chacon
+Ingeniería en Sistemas de Información
 
 ## Integrantes
 
@@ -15,19 +14,19 @@ Docente: Ing. Ivan Galo Reyes Chacon
 
 Muchas empresas pequeñas y equipos de trabajo se comunican por WhatsApp o Telegram, y así la empresa no controla nada de esas conversaciones: las decisiones quedan en el celular de cada persona, no se sabe quién ve la información y no hay registro de uso.
 
-Para resolverlo proponemos un chat empresarial interno y cerrado, con tres componentes:
+Para resolverlo proponemos un chat empresarial interno y cerrado, para una empresa con dos sedes, con tres componentes de software:
 
-- *Cliente en Go:* la aplicación del empleado para iniciar sesión, enviar mensajes y ver el historial.
-- *Servidor de chat en Go:* recibe y guarda los mensajes y los entrega al destinatario.
-- *Servicio de autenticación en FastAPI:* crea y revisa el token de sesión y controla cuándo empieza y termina cada sesión.
+- **Cliente en Go:** la aplicación del empleado para iniciar sesión, enviar mensajes y ver el historial.
+- **Servidor de chat en Go:** recibe y guarda los mensajes y los entrega al destinatario.
+- **Servicio de autenticación en FastAPI:** controla quién puede entrar y durante cuánto tiempo.
 
-Los tres se comunican por HTTP con datos en JSON. Cada acción se guarda con usuario, fecha y hora, y de ahí salen datos medibles como mensajes por usuario, sesiones por día y tiempo promedio de sesión.
+Los componentes se comunican por HTTP con datos en JSON y funcionan sobre una red de dos sedes, con un router OpenWrt (Raspberry Pi) en cada una, VLAN separadas (10 Usuarios, 20 Servidores, 30 Invitados y 99 Administración), OSPF sobre un enlace Wi-Fi compartido y direccionamiento VLSM desde 10.10.0.0/16.
 
 ## Alcance preliminar
 
-Incluye: inicio y cierre de sesión con token, mensajes de texto entre dos usuarios, historial por páginas y registro de datos de uso.
+Incluye: inicio y cierre de sesión, mensajes de texto entre dos usuarios, historial por páginas y registro de datos de uso.
 
-No incluye (por ahora): envío de archivos, chats de grupo, notificaciones, registro de usuarios nuevos desde la app y servicios externos.
+No incluye (por ahora): envío de archivos, chats de grupo, notificaciones y registro de usuarios nuevos desde la app.
 
 ## Casos de uso principales
 
@@ -38,21 +37,48 @@ No incluye (por ahora): envío de archivos, chats de grupo, notificaciones, regi
 
 ## Estructura del repositorio
 
-
+```
 chat-empresarial/
 ├── README.md
-├── docs/
-│   ├── documento-fase1.pdf
-│   └── diagrama-casos-de-uso.png
-├── client-go/
+├── LICENSE
+├── app-go/
 │   └── README.md
-└── auth-fastapi/
-    └── README.md
+├── auth-service/
+│   └── README.md
+├── network/
+│   ├── validation-plan.md
+│   ├── addressing/
+│   │   ├── addressing-plan.csv
+│   │   ├── addressing-plan.md
+│   │   └── README.md
+│   ├── configs/
+│   │   └── README.md
+│   └── diagrams/
+│       ├── Logical-Topology.png
+│       ├── Physical-Topology.png
+│       └── README.md
+├── research/
+│   └── instruments/
+│       └── README.md
+└── docs/
+    ├── diagrama-casos-de-uso.png
+    ├── ProyectoIntegradorAlc-Alm-Cay.pdf
+    └── gta1-phase1-network-plan.pdf
+```
 
+- `app-go/`: aplicación en Go (cliente y servidor de chat).
+- `auth-service/`: servicio de autenticación en FastAPI.
+- `network/`: diagramas, plan de direccionamiento y plan de validación de la red.
+- `research/`: instrumentos de la investigación estadística.
+- `docs/`: documentos entregados.
 
-- docs/: documento de análisis y especificación de requisitos (PDF) y diagrama de casos de uso.
-- client-go/: cliente del chat en Go.
-- auth-fastapi/: servicio de autenticación en FastAPI.
+## Entregables por asignatura
+
+| Asignatura | Documento |
+|---|---|
+| Programación Orientada a Objetos | [docs/ProyectoIntegradorAlc-Alm-Cay.pdf](docs/ProyectoIntegradorAlc-Alm-Cay.pdf): análisis y requisitos del chat |
+| Tecnologías de Comunicación en Red | [docs/gta1-phase1-network-plan.pdf](docs/gta1-phase1-network-plan.pdf): plan de la infraestructura de red |
 
 ## Video
-https://drive.google.com/file/d/1Yzkld3M9PBMLDh9iN60PnWhdQPSzVp1O/view?usp=sharing
+
+[pegar enlace del video]

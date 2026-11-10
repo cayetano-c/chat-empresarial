@@ -107,6 +107,7 @@ chat-empresarial/
 
 ## Video
 https://drive.google.com/file/d/1Yzkld3M9PBMLDh9iN60PnWhdQPSzVp1O/view
+https://drive.google.com/file/d/1ZV4PqNrcFLGNOaluqNKmE9oRu0QNwYyP/view?usp=sharing
 
 
 ## Autores y contribuciones

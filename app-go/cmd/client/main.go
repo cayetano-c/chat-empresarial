@@ -1,5 +1,4 @@
-// Cliente de consola del chat empresarial. Se ejecuta como un proceso
-// independiente y se conecta al servidor por HTTP/JSON.
+
 package main
 
 import (
@@ -39,9 +38,7 @@ func main() {
 	}
 }
 
-// session muestra el menú mientras el usuario tiene la sesión abierta.
-// Los mensajes nuevos se consultan en segundo plano (goroutine) para que
-// el menú no se congele esperando al servidor.
+
 func session(client *apiclient.Client, input *bufio.Reader) {
 	ctx, cancel := context.WithCancel(context.Background())
 	done := make(chan struct{})
@@ -51,7 +48,7 @@ func session(client *apiclient.Client, input *bufio.Reader) {
 	}()
 	defer func() {
 		cancel()
-		<-done // se espera a que termine la consulta antes de cerrar la sesión
+		<-done 
 		client.Logout()
 		fmt.Println("Sesión cerrada.")
 	}()
@@ -75,7 +72,7 @@ func session(client *apiclient.Client, input *bufio.Reader) {
 	}
 }
 
-// pollMessages consulta cada 3 segundos si hay mensajes nuevos y los muestra.
+
 func pollMessages(ctx context.Context, client *apiclient.Client) {
 	ticker := time.NewTicker(3 * time.Second)
 	defer ticker.Stop()
@@ -88,7 +85,7 @@ func pollMessages(ctx context.Context, client *apiclient.Client) {
 		case <-ticker.C:
 			msgs, err := client.NewMessages()
 			if err != nil {
-				if !disconnected { // se avisa una sola vez, sin llenar la pantalla
+				if !disconnected {
 					fmt.Printf("\n[!] Sin conexión con el servidor: %v\n", err)
 					disconnected = true
 				}
@@ -116,7 +113,7 @@ func sendMessage(client *apiclient.Client, input *bufio.Reader) {
 	fmt.Printf("Mensaje enviado a %s (id %d).\n", msg.To, msg.ID)
 }
 
-// showHistory muestra el historial por páginas de 50 mensajes.
+
 func showHistory(client *apiclient.Client, input *bufio.Reader) {
 	with, _ := prompt(input, "Conversación con: ")
 	for page := 1; ; page++ {
@@ -135,7 +132,7 @@ func showHistory(client *apiclient.Client, input *bufio.Reader) {
 			fmt.Printf("[%s] %s: %s\n", m.CreatedAt.Format("02/01 15:04"), m.From, m.Text)
 		}
 		if len(msgs) < apiclient.PageSize {
-			return // última página
+			return 
 		}
 		answer, _ := prompt(input, "Enter para la siguiente página, otra tecla para salir: ")
 		if answer != "" {
@@ -144,7 +141,7 @@ func showHistory(client *apiclient.Client, input *bufio.Reader) {
 	}
 }
 
-// prompt muestra un texto y lee una línea. ok es false si se cerró la entrada (Ctrl+D).
+
 func prompt(input *bufio.Reader, label string) (string, bool) {
 	fmt.Print(label)
 	line, err := input.ReadString('\n')

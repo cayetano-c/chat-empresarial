@@ -28,7 +28,7 @@ type Client struct {
 	baseURL    string
 	token      string
 	username   string
-	lastID     int // último mensaje recibido, para pedir solo los nuevos
+	lastID     int 
 	httpClient *http.Client
 }
 

@@ -37,6 +37,25 @@ No incluye (por ahora): envío de archivos, chats de grupo, notificaciones y reg
 3. CU-03: Consultar historial
 4. CU-04: Cerrar sesión
 
+## Funcionalidades
+Inicio y cierre de sesión en el cliente, con usuarios y token de prueba (simulados).
+Envío de mensajes de texto entre dos usuarios registrados.
+Recepción de mensajes nuevos
+Historial de una conversación, por páginas de 50 mensajes y ordenado por fecha.
+Guardado de los mensajes en un archivo JSON, que se recarga al reiniciar el servidor.
+Validaciones y mensajes de error claros (mensaje vacío, destinatario inexistente, token inválido, servidor apagado, etc.).
+IP y puerto configurables en el servidor y en el cliente.
+Pruebas automáticas en los seis paquetes del proyecto.
+
+## Requisitos de Software
+Go versión 1.27.3
+Una terminal en Linux o MacOS
+curl
+
+## Instalación 
+git clone https://github.com/cayetano-c/chat-empresarial.git
+cd chat-empresarial/app-go
+go test ./...
 ## Ejecución del Prototipo
 1. cd app-go
 2. go test ./...
@@ -45,8 +64,13 @@ No incluye (por ahora): envío de archivos, chats de grupo, notificaciones y reg
 5. TERMINAL 3: go run ./cmd/client
 6. Iniciar sesión con cualquiera de los 3 usuarios: "ana", "luis" o "marta"
 
+## Dirección IP, puerto y parámetros configurables.
+El servidor acepta cuatro parámetros: -host, la dirección IP en la que escucha (por defecto 127.0.0.1; con 0.0.0.0 acepta conexiones de otras máquinas); -port, el puerto (por defecto 8080); -users, el archivo con los usuarios de prueba (por defecto data/users.json); y -data, el archivo donde se guardan los mensajes (por defecto data/messages.json). El cliente acepta -host y -port (por defecto 127.0.0.1 y 8080), que deben coincidir con la dirección del servidor al que se conecta.
+Ejemplo: go run ./cmd/server -host 0.0.0.0 -port 9000 y go run ./cmd/client -host 192.168.1.10 -port 9000.
 
-
+## Datos de Prueba
+app-go/data/users.json: tres usuarios registrados, ana, luis y marta.
+En el prototipo el token de cada usuario es demo- más su nombre (por ejemplo demo-ana). No son credenciales reales: es una simulación temporal que se reemplazará por el servicio FastAPI.
 ## Estructura del repositorio
 
 ```
@@ -104,11 +128,18 @@ chat-empresarial/
 |---|---|
 | Programación Orientada a Objetos | [ProyectoIntegradorAlca-Alm-Cay.pdf](docs/ProyectoIntegradorAlca-Alm-Cay.pdf): análisis y requisitos del chat |
 | Tecnologías de Comunicación en Red | [GTA1_Phase_1_Integrated Project.pdf](docs/GTA1_Phase_1_Integrated%20Project.pdf): plan de la infraestructura de red |
-
+docs/Desarrollo del Sistemas de Gestión- Fase 2 -.pdf
 ## Video
 https://drive.google.com/file/d/1Yzkld3M9PBMLDh9iN60PnWhdQPSzVp1O/view
+https://drive.google.com/file/d/1ZV4PqNrcFLGNOaluqNKmE9oRu0QNwYyP/view?usp=sharing
 
-
+## Limitaciones
+La autenticación es una simulación (sin contraseñas ni vencimiento de tokens); se reemplazará con FastAPI en las semanas 11 y 12.
+Aún no se registran las estadísticas de uso (RF-05).
+Los mensajes se guardan en un único archivo JSON que se reescribe en cada envío; es suficiente para el prototipo, no para un volumen grande.
+Los mensajes nuevos se obtienen consultando cada 3 segundos, no en tiempo real.
+La comunicación es HTTP sin cifrar, pensada para un entorno local o de laboratorio.
+Quedan fuera del alcance los chats de grupo, el envío de archivos y el registro de usuarios desde la aplicación.
 ## Autores y contribuciones
 ## Darwin Alcarraz: 
 (/client) Encargado del desarrollo y la estructura del cliente en Go. Diseñó la interfaz orientada a comandos para el intercambio de mensajes y estableció los mecanismos de conectividad y sincronización con el servidor, asegurando la estabilidad operativa del sistema mediante pruebas automatizadas (client_test.go).

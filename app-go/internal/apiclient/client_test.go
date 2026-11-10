@@ -16,7 +16,7 @@ import (
 	"github.com/cayetano-c/chat-empresarial/app-go/internal/storage"
 )
 
-// newServer levanta un servidor de prueba real (con handlers, servicio y almacén).
+
 func newServer(t *testing.T) *httptest.Server {
 	t.Helper()
 	path := filepath.Join(t.TempDir(), "users.json")
@@ -42,7 +42,7 @@ func TestChatBetweenTwoClients(t *testing.T) {
 	if err := ana.Login("ana"); err != nil {
 		t.Fatal(err)
 	}
-	if err := luis.Login("Luis"); err != nil { // se normaliza a minúsculas
+	if err := luis.Login("Luis"); err != nil { 
 		t.Fatal(err)
 	}
 
@@ -55,7 +55,7 @@ func TestChatBetweenTwoClients(t *testing.T) {
 	if err != nil || len(got) != 1 || got[0].Text != "hola" {
 		t.Fatalf("NewMessages = %v, %v", got, err)
 	}
-	got, err = luis.NewMessages() // el mismo mensaje no debe llegar dos veces
+	got, err = luis.NewMessages() 
 	if err != nil || len(got) != 0 {
 		t.Fatalf("segunda consulta debería estar vacía: %v, %v", got, err)
 	}
@@ -114,7 +114,7 @@ func TestLogoutClearsSession(t *testing.T) {
 func TestServerDown(t *testing.T) {
 	srv := newServer(t)
 	url := srv.URL
-	srv.Close() // se apaga el servidor
+	srv.Close()
 
 	err := apiclient.New(url).Login("ana")
 	if err == nil {

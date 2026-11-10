@@ -154,7 +154,7 @@ Quedan fuera del alcance los chats de grupo, el envío de archivos y el registro
 ## Darwin Alcarraz: 
 (/client) Encargado del desarrollo y la estructura del cliente en Go. Diseñó la interfaz orientada a comandos para el intercambio de mensajes y estableció los mecanismos de conectividad y sincronización con el servidor, asegurando la estabilidad operativa del sistema mediante pruebas automatizadas (client_test.go).
 ## José Almeida: 
-(Backend / Server) Responsable del diseño y la implementación del servidor central en Go. Gestionó el enrutador de peticiones, el ciclo de vida de las conexiones y el manejo de concurrencia mediante goroutines y canales para soportar la comunicación simultánea de múltiples clientes sin bloqueos. Asimismo, colaboró en las pruebas unitarias de los manejadores de red (handlers_test.go).
+(Backend / Server) Responsable del diseño y la implementación del servidor central en Go. se encargo de el enrutador de peticiones, el ciclo de vida de las conexiones y el manejo de concurrencia mediante goroutines y canales para soportar la comunicación simultánea de múltiples clientes sin bloqueos. Asimismo colaboró con las pruebas unitarias de los manejadores de red (handlers_test.go).
 ## Cayetano Córdova: 
 (data / storage) Responsable de la estructuración del almacenamiento local y el modelado de entidades (messages.json y users.json). Implementó los servicios de persistencia y serialización para garantizar el registro seguro de usuarios y el historial de chat, además de coordinar la integración técnica con la documentación y los entregables del repositorio.
 

@@ -122,6 +122,16 @@ chat-empresarial/
 - `research/`: instrumentos de la investigación estadística.
 - `docs/`: documentos entregados.
 
+
+## Conceptos de POO aplicados
+Structs para las entidades: User, Message, Store, MockAuth, ChatService, Handler, Client.
+Constructores que garantizan un estado válido: NewUser, NewMessage, NewStore, NewMockAuth, NewChatService.
+Encapsulamiento: User y Store tienen campos no exportados y se usan mediante métodos. Message tiene campos exportados porque viaja como JSON.
+Métodos con receptor por puntero cuando modifican el estado (Save, SetDisplayName).
+Composición: ChatService contiene un almacén y un autenticador; Handler contiene el servicio.
+Interfaces pequeñas donde separan responsabilidades: MessageStore y Authenticator. Permiten cambiar la forma de guardar o de autenticar sin tocar la lógica del chat.
+Manejo explícito de errores con el tipo error, sin panic.
+Concurrencia: sync.Mutex en el almacén y una goroutine en el cliente.
 ## Entregables por asignatura
 
 | Asignatura | Documento |
